@@ -77,7 +77,11 @@ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR I
       }
       setInterval(this._wipe, wipe * 1000);
     }
-
+    
+    RedisSessions.prototype.auth = function(pass){
+      this.redis.auth(pass);
+    }
+    
     RedisSessions.prototype.activity = function(options, cb) {
       if (this._validate(options, ["app", "dt"], cb) === false) {
         return;
